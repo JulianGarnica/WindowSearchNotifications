@@ -1,0 +1,104 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Filtro búsqueda -->
+<div *ngIf="!mostrarTabla">
+  <div class="campoInputs">
+    <h1 class="titulo">Solicitud de reportes</h1>
+    <hr />
+    <form id="form1">
+      <div class="divTabla">
+        <div class="divFila">
+          <div class="divCasillaTitulo">Fecha inicio</div>
+          <div class="divCasilla"><input type="date" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Fecha fin</div>
+          <div class="divCasilla"><input type="date" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Número de reclamo</div>
+          <div class="divCasilla"><input type="number" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Tipo ID ciudadano</div>
+          <div class="divCasilla">
+            <select name="" id="">
+              <option value="Seleccione" selected disabled>Seleccione</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Número ID ciudadano</div>
+          <div class="divCasilla"><input type="number" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Nombre de ciudadano</div>
+          <div class="divCasilla">
+            <input type="text" name="" id="" />
+          </div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Correo ciudadano</div>
+          <div class="divCasilla"><input type="email" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Numero ID entidad</div>
+          <div class="divCasilla"><input type="number" name="" id="" /></div>
+        </div>
+
+        <div class="divFila">
+          <div class="divCasillaTitulo">Nombre entidad</div>
+          <div class="divCasilla"><input type="text" name="" id="" /></div>
+        </div>
+      </div>
+
+      <input type="submit" (click)="mostrarTablaResultados()" value="Filtrar" />
+    </form>
+  </div>
+</div>
+
+<div *ngIf="mostrarTabla">
+  <div class="campoInputs">
+    <h1 class="titulo">Resultado de consulta de reportes</h1>
+    <hr />
+    <div class="divTable" style="width: 100%">
+      <div class="divTableBody">
+        <div class="divTableRow">
+          <div class="divTableCellHead">Fecha Reclamo</div>
+          <div class="divTableCellHead">Numero Reclamo</div>
+          <div class="divTableCellHead">Num Id Entidad</div>
+          <div class="divTableCellHead">Num Id Ciudadano</div>
+          <div class="divTableCellHead">Tipo Id Ciudadano</div>
+          <div class="divTableCellHead">Nombre completo</div>
+          <div class="divTableCellHead">Correo</div>
+          <div class="divTableCellHead">Tipo de archivo</div>
+          <div class="divTableCellHead">Acci&oacute;n&nbsp;</div>
+        </div>
+
+        <div class="divTableRow" *ngFor="let dato of datosResultadoTabla">
+          <div class="divTableCell">{{dato.fechaReclamo}}</div>
+          <div class="divTableCell">{{dato.NumeroReclamo}}</div>
+          <div class="divTableCell">{{dato.numIdEntidad}}</div>
+          <div class="divTableCell">{{dato.NumIdCiudadano}}</div>
+          <div class="divTableCell">{{dato.TipoIdCiudadano}}</div>
+          <div class="divTableCell">{{dato.PrimerNombre}} {{dato.SegundoNombre}} {{dato.PrimerApellido}} {{dato.SegundoApellido}}</div>
+          <div class="divTableCell">{{dato.Correo}}</div>
+          <div class="divTableCell">{{dato.TipoArchivo}}</div>
+          <div class="divTableCell"><button>Descargar </button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
